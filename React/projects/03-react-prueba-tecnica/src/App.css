@@ -1,0 +1,42 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+}
+
+section p {
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #f80;
+}
+
+section img {
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.update-button {
+    padding: 5px 15px;
+    background: #08f;
+    color: #eee;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.1s linear;
+}
+
+.update-button:hover {
+    background: #0af;
+}

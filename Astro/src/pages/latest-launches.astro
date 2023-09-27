@@ -1,0 +1,28 @@
+---
+import ShowLaunches from '../components/ShowLaunches.astro';
+import Layout from '../layouts/Layout.astro';
+import type { Launch } from '../types/Launch';
+import { getLatestLaunches } from '../services/spacex';
+
+let launches: Launch[] = null!;
+try {
+    launches = await getLatestLaunches();
+} catch (error) {
+    console.error('Failed to fetch latest launches');
+}
+---
+
+<Layout title='Latest SpaceX Launches'>
+    <section class='flex flex-col gap-y-6'>
+        <h1 class='text-center text-4xl'>Latest SpaceX Launches</h1>
+        {
+            launches ? (
+                <ShowLaunches launches={launches} />
+            ) : (
+                <h1 class='text-3xl text-rose-500 text-center font-semibold'>
+                    Failed to fetch latest launches
+                </h1>
+            )
+        }
+    </section>
+</Layout>

@@ -1,0 +1,28 @@
+---
+import ShowLaunches from '../components/ShowLaunches.astro';
+import Layout from '../layouts/Layout.astro';
+import { getOldestLaunches } from '../services/spacex';
+import type { Launch } from '../types/Launch';
+
+let launches: Launch[] = null!;
+try {
+    launches = await getOldestLaunches();
+} catch (error) {
+    console.error('Failed to fetch oldest launches');
+}
+---
+
+<Layout title='Oldest SpaceX Launches'>
+    <section class='flex flex-col gap-y-6'>
+        <h1 class='text-center text-4xl'>Oldest SpaceX Launches</h1>
+        {
+            launches ? (
+                <ShowLaunches launches={launches} />
+            ) : (
+                <h1 class='text-3xl text-rose-500 text-center font-semibold'>
+                    Failed to fetch oldest launches
+                </h1>
+            )
+        }
+    </section>
+</Layout>

@@ -1,0 +1,59 @@
+---
+import Button from './Button.astro';
+---
+
+<header class='w-full h-48 flex flex-col justify-center items-center gap-y-6'>
+    <section class='flex flex-col justify-center items-center gap-y-3'>
+        <a href='/' class='flex gap-x-2'>
+            <span class='text-6xl'>🚀</span>
+            <h1 class='text-6xl text-center font-bold'>SpaceX Launches</h1>
+            <span class='text-6xl transform -rotate-90'>🚀</span>
+        </a>
+        <span class='text-lg text-zinc-400'>
+            All the information about SpaceX launches
+        </span>
+    </section>
+
+    <nav
+        class='w-full flex flex-col gap-y-6 sm:flex-row sm:gap-y-0 justify-around items-center'
+    >
+        <Button url='/oldest-launches'>
+            <span>Oldest launches</span>
+            <svg
+                slot='before'
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-arrow-badge-left'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+            >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+                <path d='M11 17h6l-4 -5l4 -5h-6l-4 5z'></path>
+            </svg>
+        </Button>
+        <Button url='/latest-launches'>
+            <span>Latest launches</span>
+            <svg
+                slot='after'
+                xmlns='http://www.w3.org/2000/svg'
+                class='icon icon-tabler icon-tabler-arrow-badge-right'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                stroke-width='2'
+                stroke='currentColor'
+                fill='none'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+            >
+                <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>
+                <path d='M13 7h-6l4 5l-4 5h6l4 -5z'></path>
+            </svg>
+        </Button>
+    </nav>
+</header>

@@ -1,0 +1,98 @@
+---
+import type { Launch } from '../types/Launch.ts';
+
+interface Props {
+    launch: Launch;
+}
+
+const { launch } = Astro.props;
+---
+
+<a href={'/launch/' + launch.id} class='relative group'>
+    <article
+        class='relative w-[300px] h-[300px] bg-purple-600 z-10 p-[2px] transition-all duration-500'
+    >
+        <div
+            class='info-container w-full h-full flex flex-col justify-between bg-gray-900'
+        >
+            <div class='w-full h-1/4 flex justify-center items-center'>
+                <span class='font-bold text-purple-600 whitespace-nowrap'>
+                    {launch.flight_number}
+                </span>
+            </div>
+            <div class='w-full h-3/4 flex justify-center items-start'>
+                {
+                    launch.links.patch.small ? (
+                        <img
+                            src={launch.links.patch.small}
+                            alt={launch.name}
+                            class='w-2/4'
+                        />
+                    ) : (
+                        <span class='text-8xl mt-4 transform -rotate-45'>
+                            🚀
+                        </span>
+                    )
+                }
+            </div>
+        </div>
+        <div
+            class='absolute bottom-0 left-0 w-full h-1/6 flex justify-center items-center'
+        >
+            <span class='font-semibold text-gray-900 whitespace-nowrap'>
+                {launch.name}
+            </span>
+        </div>
+    </article>
+    <div class='absolute top-[90%] w-full flex justify-center'>
+        <img
+            src='/src/assets/rocket-flame.png'
+            alt='rocket-flame'
+            class='transform rotate-180 transition-all duration-500 h-[50px] opacity-0 group-hover:opacity-100'
+        />
+    </div>
+</a>
+
+<style>
+    a > article {
+        clip-path: polygon(
+            50% 0,
+            10% 25%,
+            10% 85%,
+            0 100%,
+            100% 100%,
+            90% 85%,
+            90% 25%
+        );
+    }
+
+    a:hover > article {
+        animation: launch 300ms;
+        transform: translateY(-20px);
+    }
+
+    a > article > .info-container {
+        clip-path: polygon(50% 0, 10% 25%, 10% 85%, 90% 85%, 90% 25%);
+    }
+
+    @keyframes launch {
+        0% {
+            transform: rotate(0deg) translateY(0);
+        }
+        20% {
+            transform: rotate(-1deg) translateY(-4px);
+        }
+        40% {
+            transform: rotate(1deg) translateY(-8px);
+        }
+        60% {
+            transform: rotate(-1deg) translateY(-12px);
+        }
+        80% {
+            transform: rotate(1deg) translateY(-16px);
+        }
+        100% {
+            transform: rotate(0deg) translateY(-20px);
+        }
+    }
+</style>

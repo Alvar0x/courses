@@ -1,0 +1,76 @@
+---
+interface Props {
+    url: string;
+}
+
+const { url } = Astro.props;
+---
+
+<a
+    href={url}
+    class='custom-button relative flex items-center gap-x-3 custom-button font-semibold text-lg px-8 py-2 bg-gray-900 rounded-full transition-all duration-200 hover:bg-opacity-75'
+>
+    <div class='button-border'></div>
+    <div class='button-border-blur'></div>
+    <slot name='before' />
+    <slot />
+    <slot name='after' />
+</a>
+
+<style>
+    @property --gradient-angle {
+        syntax: '<angle>';
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    .custom-button .button-border {
+        position: absolute;
+        content: '';
+        inset: -2px;
+        border-radius: 50px;
+        background: conic-gradient(
+            from var(--gradient-angle),
+            #02b,
+            #b0b,
+            #02b
+        );
+        z-index: -1;
+        animation: rotate-gradient 3s linear infinite;
+        animation-play-state: paused;
+    }
+
+    .custom-button:hover .button-border {
+        animation-play-state: running;
+    }
+
+    .custom-button .button-border-blur {
+        position: absolute;
+        content: '';
+        inset: -2px;
+        border-radius: 50px;
+        background: conic-gradient(
+            from var(--gradient-angle),
+            #02b,
+            #b0b,
+            #02b
+        );
+        z-index: -1;
+        filter: blur(8px);
+        animation: rotate-gradient 3s linear infinite;
+        animation-play-state: paused;
+    }
+
+    .custom-button:hover .button-border-blur {
+        animation-play-state: running;
+    }
+
+    @keyframes rotate-gradient {
+        from {
+            --gradient-angle: 0deg;
+        }
+        to {
+            --gradient-angle: 360deg;
+        }
+    }
+</style>

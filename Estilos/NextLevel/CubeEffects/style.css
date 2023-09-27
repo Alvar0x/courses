@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #fff;
+    overflow: hidden;
+}
+
+#container {
+    position: relative;
+    height: 100vh;
+}
+
+#container .row {
+    position: relative;
+    display: inline-flex;
+    top: -45px;
+    margin-top: -45px;
+}
+
+#container .row:nth-child(even) {
+    margin-left: -75px;
+}
+
+#container .row .cube {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+#container .row .cube span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    animation: animate 10s linear infinite;
+    transition: 2s;
+}
+
+@keyframes animate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#container .row .cube:hover span {
+    transition: 0s;
+    background: lime;
+}
+
+#container .row .cube span:nth-child(1) {
+    clip-path: polygon(50% 0%, 100% 25%, 50% 50%, 0 25%);
+}
+
+#container .row .cube span:nth-child(2) {
+    clip-path: polygon(50% 50%, 50% 100%, 0 75%, 0 25%);
+}
+
+#container .row .cube span:nth-child(2):before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    clip-path: polygon(50% 50%, 50% 100%, 0 75%, 0 25%);
+}
+
+#container .row .cube span:nth-child(3) {
+    clip-path: polygon(100% 25%, 100% 75%, 50% 100%, 50% 50%);
+}
+
+#container .row .cube span:nth-child(3):before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    clip-path: polygon(100% 25%, 100% 75%, 50% 100%, 50% 50%);
+}

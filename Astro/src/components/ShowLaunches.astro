@@ -1,0 +1,20 @@
+---
+import type { Launch } from '../types/Launch';
+import LaunchCard from './LaunchCard.astro';
+
+interface Props {
+    launches: Launch[];
+}
+
+const { launches } = Astro.props;
+---
+
+<section class='flex flex-wrap justify-center gap-y-4 overflow-y-auto'>
+    {
+        launches.map((launch) => (
+            <div class='p-6'>
+                <LaunchCard launch={launch} />
+            </div>
+        ))
+    }
+</section>
