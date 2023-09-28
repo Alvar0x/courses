@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: JSX.Element }) {
     return (
         <>
             <div className='w-full'>
-                <marquee className='text-purple-500 text-lg font-semibold'>Alvaro Navas developed this page</marquee>
+                <marquee className='text-purple-500 text-lg font-semibold'>Testing route grouping. This will only appear in About and Posts pages</marquee>
             </div>
             {children}
         </>
