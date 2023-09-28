@@ -1,6 +1,7 @@
+import NavbarLink from '@/types/NavbarLink';
 import Link from 'next/link';
 
-const LINKS: Link[] = [
+const LINKS: NavbarLink[] = [
     { label: 'Home', route: '/', twColor: 'text-pink-500' },
     { label: 'About', route: '/about', twColor: 'text-red-400' },
     { label: 'Posts', route: '/posts', twColor: 'text-orange-500' },

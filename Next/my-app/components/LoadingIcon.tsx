@@ -1,6 +1,6 @@
 import styles from './Loading.module.css';
 
-export default function Loading({ delay }: { delay: number }) {
+export default function LoadingIcon({ delay }: { delay: number }) {
     return (
         <div className='loading-icon h-[100px] flex justify-center items-center gap-x-3'>
             <i style={{ animationDelay: delay * 0 + 'ms' }} className={styles.jumpingSquare + ` w-[20px] h-[20px] rounded bg-purple-800 border-2 border-purple-900`}></i>
